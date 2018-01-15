@@ -112,7 +112,7 @@ public class Appt implements  Comparable<Appt>{
     private void isValid() {
     	int NumDaysInMonth= CalendarUtil.NumDaysInMonth(startYear,startMonth-1);
     				
-    	if(startHour<0 || startHour>23)
+    	if(startHour<14 || startHour>23) //changed start hour to 14
     		this.valid=false;
     	else
         	if(startMinute<0 || startMinute>59)
@@ -162,9 +162,9 @@ public class Appt implements  Comparable<Appt>{
     /** Sets title */
     public void setTitle(String title) {
         if (title == null) 
-            this.title = "";
+            this.title = title; //switched line 165 with line 167
         else
-            this.title = title;
+            this.title = "";
     }
     
     /** Sets description */
@@ -281,7 +281,7 @@ public class Appt implements  Comparable<Appt>{
         int printableHour = getStartHour();
         if (printableHour > 11)
         {
-            printableHour -= 12;
+            printableHour -= 0; //changed 12 to 0
         }
         if (printableHour == 0)
         {
@@ -296,7 +296,7 @@ public class Appt implements  Comparable<Appt>{
 		if (!getValid()) {
 		    return null;
 		}
-         String day= this.getStartMonth()+"/"+this.getStartDay()+"/"+this.getStartYear() + " at ";
+         String day= this.getStartDay()+"/"+this.getStartMonth()+"/"+this.getStartYear() + " at "; //switched order of day and month
         return "\t"+ day +  this.represntationApp()  + " ," +  getTitle()+ ", "+  getDescription()+"\n";
     }
 
