@@ -1,0 +1,25 @@
+Bug Report:
+
+Bug #1:
+
+There is a bug that he introduced in line 115 of Appt.java. He changed "if(startHour<0 || startHour>23)"to "if(startHour<15 || startHour > 23)". 
+I found this when I set an appointment's startHour to 1 and tried to getthat appointment's valid variable. Due to the bug, the appointment was considered invalid 
+when it should've been valid.I then traced trhough the code and tried to see why it was invalid. I then noticed that the appointment's valid variable was set to 
+false when it should've been true.This bug can be reproduced by having a startHour value that is less than 15 and then trying to get that appointment's valid variable. 
+If you run the CalendarMain class, this bug would cause it to print null for some appointments.
+
+Bug #2
+
+There is another bug that he introduced in line 284 of Appt.java. He changed "printableHour -= 12;" to "printableHour -= 3;". 
+This caused a bug where the toString() method printed the wrong output by simply subtracting the hour by 3 (when the hour is greater than 11). 
+I found this bug when I set an appointment's startHour to 18 and tested the representationApp() method. The method should have printed that the hour was 6, 
+but it printed 15 instead. Due to the bug, the assertion failed and the expected output that the program shouldhave printed was incorrect. This bug can be 
+reproduced by setting the startHour to any number greater than 11. The bug will cause it to be decremented the hour by 3, which is incorrect because it should 
+actually be subtracted by 12.
+
+Bug #3
+
+There is another bug that he introduced in line 299 of the toString() method in the Appt.java. He changed "getStartDay()" to "getStartYear". 
+This causes a bug where the year is printed instead of the day. I found this bug when I tested the toString() method and the assert statement failed 
+because the output string was wrong. This bug can be reproduced by having the startDay and startYear different and then testing the toString() method. 
+The bug will cause the year to be printed twice. The bug causes the format to be "month/year/year" when it should be "month/day/year".

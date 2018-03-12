@@ -159,9 +159,9 @@ public class ApptTest {
 		 appt.setStartHour(23);
 		 assertTrue(appt.getValid());
 		 appt.setStartHour(1);
-		 assertFalse(appt.getValid()); //should be true
+		 assertTrue(appt.getValid());
 		 appt.setStartHour(0);
-		 assertFalse(appt.getValid()); //should be true
+		 assertTrue(appt.getValid());
 		 appt.setStartHour(startHour);
 		 
 		 appt.setStartDay(99);
@@ -243,16 +243,15 @@ public class ApptTest {
 	                 title,
 	                description);
 	         //System.out.println(appt.toString());
-	         assertNotEquals("\t1/1/1 at 1:1am ,1, 1\n", appt.toString()); //noticed one of introduced bugs here, where string printed is wrong
+	         assertEquals("\t1/1/1 at 1:1am ,1, 1\n", appt.toString()); //noticed one of introduced bugs here, where string printed is wrong
 	         appt.setStartHour(0);
-	         assertNotEquals("\t1/1/1 at 12:1am ,1, 1\n", appt.toString()); //noticed one of introduced bugs here, where string printed is wrong
+	         assertEquals("\t1/1/1 at 12:1am ,1, 1\n", appt.toString()); //noticed one of introduced bugs here, where string printed is wrong
 	         appt.setStartHour(15);
-	         assertNotEquals("\t1/1/1 at 3:1pm ,1, 1\n", appt.toString()); //noticed one of introduced bugs here, where string printed is wrong	
+	         assertEquals("\t1/1/1 at 3:1pm ,1, 1\n", appt.toString()); //noticed one of introduced bugs here, where string printed is wrong	
 	         appt.setStartHour(11);
-	         assertNotEquals("\t1/1/1 at 11:1am ,1, 1\n", appt.toString());
+	         assertEquals("\t1/1/1 at 11:1am ,1, 1\n", appt.toString());
 	         appt.setStartHour(12);
-	         assertNotEquals("\t1/1/1 at 12:1pm ,1, 1\n", appt.toString()); 
-	         //all of the asserts above should be true
+	         assertEquals("\t1/1/1 at 12:1pm ,1, 1\n", appt.toString());
 	 }
 //add more unit tests as you needed
 	
